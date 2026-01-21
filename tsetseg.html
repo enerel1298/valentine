@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <title>Цэцэгтэй анимэйшн веб хуудас</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+ 
+  <style>
+    body {
+      overflow: hidden;
+      background: linear-gradient(135deg, #fde2e4, #e0c3fc, #c2e9fb);
+    }
+
+    .flower {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      animation: float 12s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="relative w-screen h-screen flex items-center justify-center">
+
+  <!-- Төв хэсгийн карт -->
+  <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl p-10 text-center max-w-md">
+    <h1 class="text-4xl font-bold text-pink-600 mb-4">🌸 Баярлалаа🌸</h1>
+    <p class="text-gray-700 text-lg">
+      Чамайг зөвшөөрсөн учир энэ хязгааргүй цэцэгнүүдийг бэлэглэж байна.💐
+    </p>
+    <button class="mt-6 px-6 py-3 rounded-full bg-pink-500 text-white font-semibold hover:bg-pink-600 transition">
+      Цэцэг авъя!!!
+    </button>
+  </div>
+
+  <!-- Цэцэгнүүд -->
+  <script>
+    const flowers = ['🌸','🌼','🌺','🌷','💮'];
+
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.className = 'flower';
+      flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.style.left = Math.random() * window.innerWidth + 'px';
+      flower.style.fontSize = (30 + Math.random() * 30) + 'px';
+      flower.style.animationDuration = (8 + Math.random() * 8) + 's';
+
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 16000);
+    }
+
+    setInterval(createFlower, 600);
+  </script>
+
+</body>
+</html>
