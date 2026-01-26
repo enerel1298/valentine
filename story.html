@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Little Story 💖</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: black;
+  overflow: hidden;
+}
+
+/* SCENE */
+.scene {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+
+.scene.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.65)
+  );
+}
+
+/* CONTENT */
+.content {
+  position: absolute;
+  bottom: 12%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  animation: rise 1s ease;
+}
+
+.content h1,
+.content h2,
+.content p {
+  margin-bottom: 16px;
+}
+
+/* BUTTON */
+button {
+  border: none;
+  padding: 14px 32px;
+  font-size: 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: #ff4d6d;
+  color: white;
+}
+
+/* ANIM */
+@keyframes rise {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCENE 1 -->
+<div class="scene active" style="background-image:url('3.jpg')">
+  <div class="overlay"></div>
+  <div class="content">
+    <h1>🎬 If this was a movie…</h1>
+    <p>It would start like this.</p>
+    <button onclick="nextScene()">Next →</button>
+  </div>
+</div>
+
+<!-- SCENE 2 -->
+<div class="scene" style="background-image:url('4.jpg')">
+  <div class="overlay"></div>
+  <div class="content">
+    <h2>✨ Two people</h2>
+    <p>accidentally becoming something special.</p>
+    <button onclick="nextScene()">Next →</button>
+  </div>
+</div>
+
+<!-- SCENE 3 -->
+<div class="scene" style="background-image:url('5.jpg')">
+  <div class="overlay"></div>
+  <div class="content">
+    <h2>💫 Little moments</h2>
+    <p>that slowly turn into memories.</p>
+    <button onclick="nextScene()">Next →</button>
+  </div>
+</div>
+
+<!-- SCENE 4 (QUESTION) -->
+<div class="scene" style="background-image:url('6.jpg')">
+  <div class="overlay"></div>
+  <div class="content">
+    <h1>💖 So here’s my question</h1>
+    <p>Will you be my Valentine?</p>
+    <button onclick="finalYes()">Yes 💕</button>
+  </div>
+</div>
+
+<script>
+let current = 0;
+const scenes = document.querySelectorAll('.scene');
+
+function nextScene() {
+  scenes[current].classList.remove('active');
+  current++;
+  scenes[current].classList.add('active');
+}
+
+function finalYes() {
+  alert("💘 The story continues...");
+}
+</script>
+
+</body>
+</html>
